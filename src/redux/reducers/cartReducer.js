@@ -22,6 +22,10 @@ export default function cartReducer(state = initialState.cart, action) {
         // React ile pop push işlemleri yapmıyoruz.
         return [...state, { ...action.payload }];
       }
+    case actionTypes.REMOVE_FROM_CART:
+      return state.filter(
+        (cartItem) => cartItem.product.id !== action.payload.id
+      );
     default:
       return state;
   }
